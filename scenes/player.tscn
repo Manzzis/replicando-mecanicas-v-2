@@ -1,21 +1,28 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgvn847abx8wx"]
 
 [ext_resource type="Script" uid="uid://b8rlblm0ql7h5" path="res://scenes/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://dnimolamev5k3" path="res://assets/sprites/plantilla_Personaje_64x64.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://na7bws1wvda5" path="res://icon.svg" id="2_g2els"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(31, 99)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(25, 23)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_qhqgy")
-offset = Vector2(36, 0)
+texture = ExtResource("2_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, 4.5)
-shape = SubResource("RectangleShape2D_dqkch")
+shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TimeDash" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="TimeNewDash" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="TimeDash" to="." method="_on_time_dash_timeout"]
+[connection signal="timeout" from="TimeNewDash" to="." method="_on_time_new_dash_timeout"]
