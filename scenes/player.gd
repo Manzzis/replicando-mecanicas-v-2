@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
+@export_category("stats")
+@export var SPEED = 300.0
+@export var JUMP_VELOCITY = -400.0
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var new_dir :Vector2 = Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
@@ -21,5 +23,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	velocity += new_dir
+	new_dir = Vector2.ZERO
+	
 
 	move_and_slide()

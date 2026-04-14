@@ -1,11 +1,13 @@
 extends Node2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var vectorCreator = load("res://scenes/creador_de_vectores.tscn")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+func _on_creador_de_vectores_vector_created(Force: Vector2) -> void:
+	#if $player.global_position.distance_to($objeto.global_position) <= 50:
+	$objeto.apply_impulse(Vector2.ZERO, Force * 2000)
+	$objeto.linear_velocity = Force * 5
+	var dir = Force.normalized()
+	$player.new_dir.x = dir.x * 2000
+	$player.new_dir.y = Force.y * 5

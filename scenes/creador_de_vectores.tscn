@@ -1,7 +1,21 @@
-[gd_scene format=3 uid="uid://bdp7ekqbjwovs"]
+[gd_scene load_steps=3 format=3 uid="uid://bdp7ekqbjwovs"]
+
+[ext_resource type="Script" uid="uid://2m0mao6noh7m" path="res://scenes/creador_de_vectores.gd" id="1_x3j7w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3j7w"]
+size = Vector2(103, 79)
 
 [node name="creador de vectores" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_x3j7w")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_x3j7w")
+debug_color = Color(0.8271715, 0.28246355, 0.7040115, 0.41960785)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

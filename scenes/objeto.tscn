@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb3h5o6e3jurw"]
+
+[ext_resource type="Texture2D" uid="uid://dyio6duo3i0b5" path="res://assets/sprites/Mascara4.png" id="1_0cxrf"]
+[ext_resource type="Script" uid="uid://bwv5o3fmnxhmw" path="res://scenes/objeto.gd" id="1_pq2m7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pq2m7"]
+radius = 15.132746
+
+[node name="objeto" type="RigidBody2D"]
+script = ExtResource("1_pq2m7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0cxrf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pq2m7")
+debug_color = Color(9.62615e-07, 0.6389626, 0.3757859, 0.41960785)
