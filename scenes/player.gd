@@ -7,6 +7,9 @@ extends CharacterBody2D
 var max_jumps = 1
 @export var dash_speed : float = 700.0
 
+@onready var animation_player = $AnimationPlayer
+@onready var sprite2d = $Sprite2D
+
 var puede_dashear : bool = true
 var dash_active : bool = false
 
@@ -42,7 +45,31 @@ func _physics_process(delta: float) -> void:
 		$TimeDash.start()
 		$TimeNewDash.start()
 	
+	animation(direction)
 	move_and_slide()
+	
+	if direction == 1:
+		sprite2d.flip_h = false
+	elif direction == -1:
+		sprite2d.flip_h = true
+
+
+func animation(direction):
+	if dash_active == true:
+		animation_player.play("dash_roll")
+		return
+	
+	if is_on_floor():
+		if direction == 0 and dash_active == false:
+			animation_player.play("idle")
+		else:
+			animation_player.play("run")
+	else:
+		if velocity.y < 0:
+			animation_player.play("jump")
+		elif velocity.y > 0:
+			animation_player.play("fall")
+	
 
 
 func dashing():
@@ -54,6 +81,7 @@ func dashing():
 
 func _on_time_dash_timeout() -> void:
 	dash_active = false
+	animation_player.play("idle")
 
 
 func _on_time_new_dash_timeout() -> void:

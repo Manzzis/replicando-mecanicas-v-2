@@ -171,7 +171,6 @@ tile_set = SubResource("TileSet_bdpbv")
 
 [node name="player" parent="." instance=ExtResource("3_57l66")]
 position = Vector2(293, 482.00003)
-scale = Vector2(1.5, 1.5)
 
 [node name="objeto" parent="." instance=ExtResource("5_bdpbv")]
 position = Vector2(477, 379)
@@ -181,3 +180,5 @@ player = NodePath("../player")
 
 [connection signal="input_event" from="player" to="." method="_on_player_input_event"]
 [connection signal="vector_created" from="creador de vectores" to="." method="_on_creador_de_vectores_vector_created"]
+
+[editable path="player"]
