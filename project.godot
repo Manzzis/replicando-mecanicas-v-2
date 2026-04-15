@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Replicando mecanicas v2"
+config/name="mov2d_arte_manzano"
 run/main_scene="uid://noc14ewcy06i"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
