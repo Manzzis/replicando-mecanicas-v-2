@@ -172,6 +172,9 @@ tile_set = SubResource("TileSet_bdpbv")
 [node name="player" parent="." instance=ExtResource("3_57l66")]
 position = Vector2(293, 482.00003)
 
+[node name="CollisionShape2D" parent="player" index="1"]
+visible = true
+
 [node name="objeto" parent="." instance=ExtResource("5_bdpbv")]
 position = Vector2(477, 379)
 
